@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Logo } from './logo';
 
 const navLinks = [
   { label: 'Каталог', href: '/catalog' },
@@ -50,18 +51,7 @@ export function Navbar() {
           <div className="flex items-center justify-between h-[72px] max-sm:h-16">
 
             {/* Logo */}
-            <Link
-              href="/"
-              className="flex flex-col leading-none group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded"
-              aria-label="Baggertrans — на головну"
-            >
-              <span className="text-xl font-black tracking-tight text-white">
-                <span className="text-[var(--color-accent)]">B</span>AGGERTRANS
-              </span>
-              <span className="text-[10px] font-medium tracking-[0.18em] uppercase text-[var(--color-accent)] opacity-80 group-hover:opacity-100 transition-opacity">
-                Оренда техніки
-              </span>
-            </Link>
+            <Logo size="sm" />
 
             {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-1" aria-label="Основна навігація">

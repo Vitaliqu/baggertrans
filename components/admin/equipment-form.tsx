@@ -3,15 +3,14 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Plus, Trash2, Loader2, AlertCircle } from 'lucide-react';
+import { Plus, Trash2, AlertCircle } from 'lucide-react';
 import { equipmentSchema, type EquipmentFormValues } from '@/lib/validations/equipment';
 import { createEquipment, updateEquipment } from '@/lib/firebase/equipment';
 import type { Equipment } from '@/types';
 import { CATEGORY_LABELS } from '@/types';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { ImageUpload } from './image-upload';
 
 interface EquipmentFormProps {
   equipment?: Equipment;
@@ -31,10 +30,10 @@ export function EquipmentForm({ equipment, onSuccess, onCancel }: EquipmentFormP
     ? Object.entries(equipment.specs).map(([key, value]) => ({ key, value }))
     : [];
 
-  const initialImages: string[] = equipment?.images.slice(0, 5) ?? [''];
+  const initialImages: string[] = equipment?.images.slice(0, 5) ?? [];
 
   const [specs, setSpecs] = useState<SpecPair[]>(initialSpecs);
-  const [images, setImages] = useState<string[]>(initialImages.length ? initialImages : ['']);
+  const [images, setImages] = useState<string[]>(initialImages);
   const [serverError, setServerError] = useState<string | null>(null);
 
   const {
@@ -68,18 +67,6 @@ export function EquipmentForm({ equipment, onSuccess, onCancel }: EquipmentFormP
 
   function updateSpec(index: number, field: 'key' | 'value', val: string) {
     setSpecs((prev) => prev.map((s, i) => (i === index ? { ...s, [field]: val } : s)));
-  }
-
-  function addImage() {
-    if (images.length < 5) setImages((prev) => [...prev, '']);
-  }
-
-  function removeImage(index: number) {
-    setImages((prev) => prev.filter((_, i) => i !== index));
-  }
-
-  function updateImage(index: number, val: string) {
-    setImages((prev) => prev.map((img, i) => (i === index ? val : img)));
   }
 
   async function onSubmit(data: EquipmentFormValues) {
@@ -235,41 +222,8 @@ export function EquipmentForm({ equipment, onSuccess, onCancel }: EquipmentFormP
 
       {/* Images */}
       <div>
-        <div className="flex items-center justify-between mb-2">
-          <label className={cn(labelClass, 'mb-0')}>Зображення (URL, до 5)</label>
-          {images.length < 5 && (
-            <button
-              type="button"
-              onClick={addImage}
-              className="flex items-center gap-1 text-xs text-[var(--color-accent)] hover:underline"
-            >
-              <Plus size={12} />
-              Додати
-            </button>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
-          {images.map((img, idx) => (
-            <div key={idx} className="flex gap-2">
-              <input
-                type="url"
-                value={img}
-                onChange={(e) => updateImage(idx, e.target.value)}
-                placeholder={`https://example.com/image${idx + 1}.jpg`}
-                className={cn(fieldClass, 'flex-1')}
-              />
-              {images.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => removeImage(idx)}
-                  className="flex items-center justify-center w-10 h-10 rounded-md border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-destructive)] hover:border-[var(--color-destructive)] transition-colors shrink-0"
-                >
-                  <Trash2 size={14} />
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
+        <label className={cn(labelClass, 'mb-2')}>Зображення (до 5)</label>
+        <ImageUpload images={images} onChange={setImages} maxImages={5} />
       </div>
 
       {/* Specs */}

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Logo } from '@/components/layout/logo';
 
 const proof = [
   { value: '150+', label: 'одиниць техніки' },
@@ -41,12 +42,11 @@ export function Hero() {
       {/* Content column */}
       <div className="container-site relative z-10 py-20 lg:py-28">
         <div className="max-w-[560px]">
-
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
             className="flex items-center gap-3 mb-8"
           >
             <span className="block w-6 h-px bg-[var(--color-accent)]" aria-hidden="true" />
