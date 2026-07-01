@@ -161,7 +161,7 @@ export function BookingPageClient({ equipment, preselectedId }: Props) {
             </a>
             <a
               href="/"
-              className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg bg-[var(--color-accent)] text-white text-sm font-semibold hover:bg-[var(--color-accent-hover)] transition-colors shadow-[0_4px_14px_0_rgba(234,88,12,0.3)]"
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-semibold hover:bg-[var(--color-accent-hover)] transition-colors shadow-[0_4px_14px_0_rgba(244,184,21,0.3)]"
             >
               На головну
             </a>
@@ -197,7 +197,7 @@ export function BookingPageClient({ equipment, preselectedId }: Props) {
               aria-labelledby="step-equipment"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-accent)] text-white text-sm font-bold shrink-0">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-bold shrink-0">
                   1
                 </div>
                 <div className="flex items-center gap-2">
@@ -263,7 +263,7 @@ export function BookingPageClient({ equipment, preselectedId }: Props) {
               aria-labelledby="step-dates"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-accent)] text-white text-sm font-bold shrink-0">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-bold shrink-0">
                   2
                 </div>
                 <div className="flex items-center gap-2">
@@ -322,7 +322,7 @@ export function BookingPageClient({ equipment, preselectedId }: Props) {
               aria-labelledby="step-services"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-accent)] text-white text-sm font-bold shrink-0">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-bold shrink-0">
                   3
                 </div>
                 <div className="flex items-center gap-2">
@@ -377,7 +377,7 @@ export function BookingPageClient({ equipment, preselectedId }: Props) {
               aria-labelledby="step-contact"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-accent)] text-white text-sm font-bold shrink-0">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-bold shrink-0">
                   4
                 </div>
                 <div className="flex items-center gap-2">
@@ -411,7 +411,7 @@ export function BookingPageClient({ equipment, preselectedId }: Props) {
                       id="clientPhone"
                       type="tel"
                       autoComplete="tel"
-                      placeholder="+38 (067) 123-45-67"
+                      placeholder="+420 733 777 999"
                       aria-required="true"
                       aria-invalid={!!errors.clientPhone}
                       className={inputCls(!!errors.clientPhone)}
@@ -490,10 +490,10 @@ export function BookingPageClient({ equipment, preselectedId }: Props) {
                 disabled={submitStatus === 'loading'}
                 className={cn(
                   'w-full inline-flex items-center justify-center gap-2 h-14 px-8 text-base font-bold rounded-xl',
-                  'bg-[var(--color-accent)] text-white',
+                  'bg-[var(--color-accent)] text-[var(--color-primary)]',
                   'hover:bg-[var(--color-accent-hover)] active:scale-[0.98]',
                   'disabled:opacity-60 disabled:cursor-not-allowed',
-                  'transition-all shadow-[0_4px_20px_0_rgba(234,88,12,0.4)]',
+                  'transition-all shadow-[0_4px_20px_0_rgba(244,184,21,0.4)]',
                 )}
                 aria-busy={submitStatus === 'loading'}
               >
@@ -622,10 +622,10 @@ export function BookingPageClient({ equipment, preselectedId }: Props) {
                     disabled={submitStatus === 'loading'}
                     className={cn(
                       'w-full inline-flex items-center justify-center gap-2 h-13 px-6 text-sm font-bold rounded-xl mt-1',
-                      'bg-[var(--color-accent)] text-white',
+                      'bg-[var(--color-accent)] text-[var(--color-primary)]',
                       'hover:bg-[var(--color-accent-hover)] active:scale-[0.98]',
                       'disabled:opacity-60 disabled:cursor-not-allowed',
-                      'transition-all shadow-[0_4px_14px_0_rgba(234,88,12,0.35)]',
+                      'transition-all shadow-[0_4px_14px_0_rgba(244,184,21,0.35)]',
                     )}
                     aria-busy={submitStatus === 'loading'}
                   >

@@ -45,13 +45,17 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       <motion.div
-        initial={{ opacity: 0, y: 24, scale: 0.97 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 16, scale: 0.97 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 16 }}
         transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
-          'fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2',
-          'w-full max-w-lg rounded-xl border border-[var(--color-border,#e2e8f0)] bg-[var(--color-surface,#ffffff)] shadow-xl',
+          // Mobile: full-screen sheet
+          'fixed inset-0 z-50 overflow-y-auto bg-[var(--color-surface,#ffffff)]',
+          // Desktop: centered floating modal
+          'sm:inset-auto sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2',
+          'sm:w-full sm:max-w-lg sm:max-h-[90vh]',
+          'sm:rounded-xl sm:border sm:border-[var(--color-border,#e2e8f0)] sm:shadow-xl',
           'focus:outline-none',
           className
         )}

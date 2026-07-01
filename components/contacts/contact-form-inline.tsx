@@ -112,7 +112,7 @@ export function ContactFormInline() {
           id="cnt-phone"
           type="tel"
           autoComplete="tel"
-          placeholder="+38 (067) 123-45-67"
+          placeholder="+420 733 777 999"
           aria-required="true"
           aria-invalid={!!errors.phone}
           className={inputCls(!!errors.phone)}
@@ -172,10 +172,10 @@ export function ContactFormInline() {
         disabled={status === 'loading'}
         className={cn(
           'inline-flex items-center justify-center gap-2 h-12 px-7 text-sm font-bold rounded-lg',
-          'bg-[var(--color-accent)] text-white',
+          'bg-[var(--color-accent)] text-[var(--color-primary)]',
           'hover:bg-[var(--color-accent-hover)] active:scale-[0.98]',
           'disabled:opacity-60 disabled:cursor-not-allowed',
-          'transition-all shadow-[0_4px_14px_0_rgba(234,88,12,0.35)]',
+          'transition-all shadow-[0_4px_14px_0_rgba(244,184,21,0.35)]',
         )}
         aria-busy={status === 'loading'}
       >

@@ -1,116 +1,81 @@
 'use client';
 
-import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Truck, Users, Clock, Wrench, BadgePercent, Headphones, ArrowRight, type LucideIcon } from 'lucide-react';
-
-interface Advantage {
+import { Trophy, Truck, Users, MapPin, type LucideIcon } from 'lucide-react';
+import volvo2 from "../../app/(public)/volvo2.jpg"
+interface Stat {
   icon: LucideIcon;
-  title: string;
-  description: string;
+  value: string;
+  label: string;
 }
 
-const advantages: Advantage[] = [
-  {
-    icon: Truck,
-    title: 'Великий парк техніки',
-    description: 'Понад 150 одиниць сучасної будівельної техніки різних класів та призначень для будь-яких задач.',
-  },
-  {
-    icon: Users,
-    title: 'Досвідчені оператори',
-    description: 'Кваліфіковані машиністи з досвідом понад 5 років. Усі мають відповідні допуски та сертифікати.',
-  },
-  {
-    icon: Clock,
-    title: 'Швидка подача',
-    description: 'Виїзд техніки на об\'єкт за 2–4 години після підтвердження заявки в межах міста.',
-  },
-  {
-    icon: Wrench,
-    title: 'Технічне обслуговування',
-    description: 'Уся техніка регулярно проходить огляд. Власна ремонтна служба забезпечує мінімальний простій.',
-  },
-  {
-    icon: BadgePercent,
-    title: 'Гнучкі тарифи',
-    description: 'Погодинна, денна, тижнева та місячна оренда. Знижки для постійних клієнтів та великих об\'єктів.',
-  },
-  {
-    icon: Headphones,
-    title: 'Повний супровід',
-    description: 'Персональний менеджер та повне документальне оформлення угоди від заявки до закриття.',
-  },
+const stats: Stat[] = [
+  { icon: Trophy, value: '5+', label: 'років досвіду на ринку спецтехніки' },
+  { icon: Truck, value: '100+', label: 'одиниць техніки продано та здано в оренду' },
+  { icon: Users, value: '100%', label: 'задоволені клієнти індивідуальний підхід' },
+  { icon: MapPin, value: '', label: 'Працюємо тільки в Закарпатті' },
 ];
 
 export function Advantages() {
   return (
     <section
-      className="section-padding bg-[var(--color-surface-2)]"
-      aria-labelledby="advantages-heading"
+      id="why-us"
+      className="relative section-padding bg-[var(--color-primary)] overflow-hidden"
+      aria-labelledby="why-us-heading"
     >
-      <div className="container-site">
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-start">
+      {/* Faint background photo */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <Image
+          src={volvo2}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-45"
+        />
+        <div className="absolute inset-0 bg-[var(--color-primary)]/85" />
+      </div>
 
-          {/* Left: sticky statement */}
+      <div className="container-site relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] gap-10 lg:gap-16 items-center">
+
+          {/* Left: statement */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.55, ease: 'easeOut' }}
-            className="lg:sticky lg:top-28"
           >
-            <span className="block w-6 h-px bg-[var(--color-accent)] mb-7" aria-hidden="true" />
             <h2
-              id="advantages-heading"
-              className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold text-[var(--color-text)] leading-[1.15] tracking-tight mb-5"
+              id="why-us-heading"
+              className="text-2xl sm:text-3xl font-black uppercase leading-tight tracking-tight mb-4"
             >
-              Чому будівельники обирають Baggertrans
+              <span className="block text-white">Чому обирають</span>
+              <span className="block text-[var(--color-accent)]">Baggertrans?</span>
             </h2>
-            <p className="text-[var(--color-text-muted)] text-base leading-relaxed mb-8 max-w-sm">
-              Понад 10 років ми забезпечуємо будівельні компанії надійною технікою — від точкових ремонтів до масштабних інфраструктурних об&apos;єктів.
+            <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
+              Ми пропонуємо надійну спецтехніку з Європи за чесними цінами та повним сервісним супроводом.
             </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors focus-visible:outline-none focus-visible:underline"
-            >
-              Про компанію
-              <ArrowRight size={14} />
-            </Link>
           </motion.div>
 
-          {/* Right: numbered advantage list */}
-          <div className="divide-y divide-[var(--color-border)]">
-            {advantages.map(({ icon: Icon, title, description }, i) => (
+          {/* Right: stats row */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-6">
+            {stats.map(({ icon: Icon, value, label }, i) => (
               <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 16 }}
+                key={label}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.45, ease: 'easeOut', delay: i * 0.05 }}
-                className="flex gap-5 py-6 first:pt-0 last:pb-0"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: i * 0.08 }}
+                className="flex flex-col gap-2.5"
               >
-                <span
-                  className="text-[11px] font-mono text-[var(--color-text-muted)]/50 w-6 shrink-0 pt-0.5 tabular-nums select-none"
-                  aria-hidden="true"
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div className="flex gap-4 flex-1 min-w-0">
-                  <Icon
-                    size={17}
-                    className="text-[var(--color-accent)] shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <h3 className="font-semibold text-[var(--color-text)] mb-1 text-sm sm:text-base">
-                      {title}
-                    </h3>
-                    <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
-                      {description}
-                    </p>
-                  </div>
-                </div>
+                <Icon size={26} strokeWidth={1.75} className="text-[var(--color-accent)]" aria-hidden="true" />
+                {value && (
+                  <div className="text-3xl font-black text-white tabular-nums leading-none">{value}</div>
+                )}
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-300 leading-snug">
+                  {label}
+                </p>
               </motion.div>
             ))}
           </div>

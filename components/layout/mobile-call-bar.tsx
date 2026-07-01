@@ -22,10 +22,10 @@ export function MobileCallBar() {
       `}
       style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}
     >
-      <div className="bg-[#080f1d]/96 backdrop-blur-sm border-t border-white/8 px-4 pt-3 pb-3">
+      <div className="bg-[var(--color-primary)]/96 backdrop-blur-sm border-t border-white/8 px-4 pt-3 pb-3">
         <a
-          href="tel:+380671234567"
-          className="flex items-center justify-center gap-2.5 h-13 w-full bg-[var(--color-accent)] text-white font-bold text-[15px] rounded-lg hover:bg-[var(--color-accent-hover)] transition-colors shadow-[0_4px_20px_0_rgba(234,88,12,0.4)] active:scale-[0.99]"
+          href="tel:+420733777999"
+          className="flex items-center justify-center gap-2.5 h-13 w-full bg-[var(--color-accent)] text-[var(--color-primary)] font-bold text-[15px] uppercase tracking-wide rounded-lg hover:bg-[var(--color-accent-hover)] transition-colors shadow-[0_4px_20px_0_rgba(244,184,21,0.4)] active:scale-[0.99]"
         >
           <Phone size={18} strokeWidth={2.5} aria-hidden="true" />
           Зателефонувати

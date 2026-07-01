@@ -37,7 +37,7 @@ export function EquipmentSpecs({ specs, pricePerDay, pricePerWeek, pricePerMonth
 
         {pricePerWeek ? (
           <div className="rounded-xl border border-[var(--color-accent)]/30 bg-[var(--color-accent-light,#fff7ed)] p-4 text-center relative">
-            <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[var(--color-accent)] text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
+            <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[var(--color-accent)] text-[var(--color-primary)] text-[10px] font-semibold px-2 py-0.5 rounded-full">
               Вигідно
             </span>
             <p className="text-xs text-[var(--color-text-muted)] uppercase tracking-wide mb-1">Тиждень</p>

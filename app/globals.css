@@ -22,18 +22,18 @@
   --color-orange-900: #7c2d12;
 
   /* ---- Semantic Tokens ---- */
-  --color-primary: #0f172a;
-  --color-primary-hover: #1e293b;
-  --color-accent: #ea580c;
-  --color-accent-hover: #c2410c;
-  --color-accent-light: #fff7ed;
-  --color-bg: #f8fafc;
+  --color-primary: #16171a;
+  --color-primary-hover: #232427;
+  --color-accent: #f4b815;
+  --color-accent-hover: #d9a20e;
+  --color-accent-light: #fcefc7;
+  --color-bg: #f4f4f5;
   --color-surface: #ffffff;
-  --color-surface-2: #f1f5f9;
-  --color-text: #0f172a;
-  --color-text-muted: #475569;
-  --color-border: #e2e8f0;
-  --color-border-strong: #cbd5e1;
+  --color-surface-2: #ececee;
+  --color-text: #18181b;
+  --color-text-muted: #6b6b70;
+  --color-border: #e4e4e7;
+  --color-border-strong: #cfcfd3;
   --color-success: #16a34a;
   --color-warning: #d97706;
   --color-destructive: #dc2626;
@@ -119,10 +119,10 @@ h1, h2, h3, h4, h5, h6 {
 .delay-400 { animation-delay: 400ms; }
 
 /* ---- Gradient utilities ---- */
-.gradient-navy { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); }
-.gradient-orange { background: linear-gradient(135deg, #ea580c 0%, #f97316 100%); }
+.gradient-navy { background: linear-gradient(135deg, #16171a 0%, #232427 100%); }
+.gradient-orange { background: linear-gradient(135deg, #f4b815 0%, #d9a20e 100%); }
 .text-gradient-orange {
-  background: linear-gradient(135deg, #ea580c, #f97316);
+  background: linear-gradient(135deg, #f4b815, #d9a20e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -9,9 +9,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-hover,#c2410c)] active:scale-[0.98]',
+          'bg-[var(--color-accent)] text-[var(--color-primary)] hover:bg-[var(--color-accent-hover,#d9a20e)] active:scale-[0.98]',
         secondary:
-          'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover,#1e293b)] active:scale-[0.98]',
+          'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover,#232427)] active:scale-[0.98]',
         outline:
           'border-2 border-[var(--color-border)] text-[var(--color-text)] bg-transparent hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] active:scale-[0.98]',
         ghost:
@@ -43,7 +43,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const shadowStyle =
       variant === 'primary'
-        ? { boxShadow: '0 4px 14px 0 rgba(234,88,12,0.35)', ...style }
+        ? { boxShadow: '0 4px 14px 0 rgba(244,184,21,0.35)', ...style }
         : style;
 
     return (

@@ -162,7 +162,7 @@ export default function SeedPage() {
           <button
             type="button"
             onClick={() => runSeed(false)}
-            className="inline-flex items-center gap-2 px-6 h-11 text-sm font-semibold rounded-lg text-white bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_2px_12px_0_rgba(234,88,12,0.35)]"
+            className="inline-flex items-center gap-2 px-6 h-11 text-sm font-semibold rounded-lg text-[var(--color-primary)] bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_2px_12px_0_rgba(244,184,21,0.35)]"
           >
             <Database size={16} />
             Додати {seedTotal} позицій

@@ -6,26 +6,26 @@ import { ContactFormInline } from '@/components/contacts/contact-form-inline';
 export const metadata: Metadata = {
   title: 'Контакти — Baggertrans',
   description:
-    "Зв'яжіться з Baggertrans: адреса, телефон, email. Оренда будівельної техніки в Києві та по всій Україні.",
+    "Зв'яжіться з Baggertrans: адреса, телефон, email. Продаж та оренда спецтехніки з Європи в Закарпатській області.",
 };
 
 const contactCards = [
   {
     icon: MapPin,
     title: 'Адреса',
-    lines: ['м. Київ, вул. Будівельна, 12', 'офіс 301'],
+    lines: ['Закарпатська область', 'Україна'],
     href: null as string | null,
   },
   {
     icon: Phone,
     title: 'Телефон',
-    lines: ['+380 44 123 45 67', '+380 67 123 45 67'],
-    href: 'tel:+380441234567',
+    lines: ['+420 733 777 999', '+420 775 111 555'],
+    href: 'tel:+420733777999',
   },
   {
     icon: Mail,
     title: 'Email',
-    lines: ['info@baggertrans.ua', 'sales@baggertrans.ua'],
+    lines: ['info@baggertrans.ua'],
     href: 'mailto:info@baggertrans.ua',
   },
 ];
@@ -139,13 +139,13 @@ export default function ContactsPage() {
                 </div>
                 <div>
                   <p className="text-white font-bold text-lg">Знайдіть нас на карті</p>
-                  <p className="text-slate-400 text-sm mt-1">м. Київ, вул. Будівельна, 12, офіс 301</p>
+                  <p className="text-slate-400 text-sm mt-1">Закарпатська область, Україна</p>
                 </div>
                 <a
                   href="https://maps.google.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1 inline-flex items-center gap-2 h-10 px-5 rounded-lg bg-[var(--color-accent)] text-white text-sm font-semibold hover:bg-[var(--color-accent-hover)] transition-colors"
+                  className="mt-1 inline-flex items-center gap-2 h-10 px-5 rounded-lg bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-semibold hover:bg-[var(--color-accent-hover)] transition-colors"
                 >
                   Відкрити в Google Maps
                 </a>

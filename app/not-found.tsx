@@ -20,7 +20,7 @@ export default function NotFound() {
             className="absolute -top-6 left-1/2 -translate-x-1/2 text-[130px] font-black leading-none pointer-events-none whitespace-nowrap"
             aria-hidden="true"
             style={{
-              background: 'linear-gradient(135deg, rgba(234,88,12,0.18) 0%, rgba(249,115,22,0.06) 100%)',
+              background: 'linear-gradient(135deg, rgba(244,184,21,0.18) 0%, rgba(249,115,22,0.06) 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -55,7 +55,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-400">
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-xl bg-[var(--color-accent)] text-white text-sm font-bold hover:bg-[var(--color-accent-hover)] active:scale-[0.98] transition-all shadow-[0_4px_20px_0_rgba(234,88,12,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-xl bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-bold hover:bg-[var(--color-accent-hover)] active:scale-[0.98] transition-all shadow-[0_4px_20px_0_rgba(244,184,21,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             <Home size={16} aria-hidden="true" />
             На головну

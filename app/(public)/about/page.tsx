@@ -249,7 +249,7 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/booking"
-              className="inline-flex items-center justify-center gap-2 h-13 px-8 rounded-xl bg-[var(--color-accent)] text-white text-sm font-bold hover:bg-[var(--color-accent-hover)] transition-colors shadow-[0_4px_20px_0_rgba(234,88,12,0.4)]"
+              className="inline-flex items-center justify-center gap-2 h-13 px-8 rounded-xl bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-bold hover:bg-[var(--color-accent-hover)] transition-colors shadow-[0_4px_20px_0_rgba(244,184,21,0.4)]"
             >
               Замовити техніку
               <ChevronRight size={16} aria-hidden="true" />

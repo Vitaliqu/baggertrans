@@ -56,10 +56,10 @@ export default function FAQPage() {
                   Написати нам
                 </a>
                 <a
-                  href="tel:+380441234567"
-                  className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg bg-[var(--color-accent)] text-white text-sm font-bold hover:bg-[var(--color-accent-hover)] transition-colors shadow-[0_4px_14px_0_rgba(234,88,12,0.3)]"
+                  href="tel:+420733777999"
+                  className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-bold hover:bg-[var(--color-accent-hover)] transition-colors shadow-[0_4px_14px_0_rgba(244,184,21,0.3)]"
                 >
-                  +380 44 123 45 67
+                  +420 733 777 999
                 </a>
               </div>
             </div>

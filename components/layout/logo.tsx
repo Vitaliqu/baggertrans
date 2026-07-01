@@ -22,12 +22,11 @@ function LogoContent({ size = 'md' }: { size?: LogoProps['size'] }) {
       <Image width={48} height={48} alt="Logo" src={logo} className="rounded object-contain" />
 
       <span className="flex flex-col leading-none">
-        <span className={cn('font-black tracking-tight', s.text)}>
-          <span style={{ color: '#F5C300' }}>BAGGER</span>
-          <span className="text-slate-400">TRANS</span>
+        <span className={cn('font-black tracking-tight text-white', s.text)}>
+          BAGGERTRANS
         </span>
-        <span className={cn('font-medium tracking-[0.16em] uppercase text-slate-500 mt-0.5', s.sub)}>
-          Оренда техніки
+        <span className={cn('font-bold tracking-[0.16em] uppercase text-[var(--color-accent)] mt-0.5', s.sub)}>
+          Спецтехніка з Європи
         </span>
       </span>
     </span>

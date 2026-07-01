@@ -1,19 +1,31 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Menu, X, Home } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { LayoutDashboard, Truck, CalendarCheck, LogOut } from 'lucide-react';
 import { AuthProvider } from '@/components/providers/auth-provider';
 import { AdminSidebar } from '@/components/admin/admin-sidebar';
 import { useAuth } from '@/lib/hooks/use-auth';
 import { Spinner } from '@/components/ui/spinner';
 import { signOut } from '@/lib/firebase/auth';
-import { useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
+
+const BOTTOM_NAV = [
+  { href: '/admin', label: 'Дашборд', icon: LayoutDashboard, exact: true },
+  { href: '/admin/equipment', label: 'Техніка', icon: Truck, exact: false },
+  { href: '/admin/bookings', label: 'Бронювання', icon: CalendarCheck, exact: false },
+];
 
 function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   const { user, isAdmin, loading } = useAuth();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const pathname = usePathname();
   const router = useRouter();
+
+  function isActive(href: string, exact: boolean) {
+    if (exact) return pathname === href;
+    return pathname.startsWith(href);
+  }
 
   if (loading) {
     return (
@@ -51,16 +63,12 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
             )}
             <Link
               href="/"
-              className="h-10 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium flex items-center justify-center gap-2 hover:bg-orange-700 transition-colors"
+              className="h-10 rounded-lg bg-[var(--color-accent)] text-[var(--color-primary)] text-sm font-medium flex items-center justify-center gap-2 hover:bg-[var(--color-accent-hover)] transition-colors"
             >
-              <Home size={16} />
               На головну
             </Link>
             {!user && (
-              <Link
-                href="/login"
-                className="text-sm text-[var(--color-accent)] hover:underline"
-              >
+              <Link href="/login" className="text-sm text-[var(--color-accent)] hover:underline">
                 Увійти
               </Link>
             )}
@@ -77,41 +85,57 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
         <AdminSidebar />
       </div>
 
-      {/* Mobile sidebar overlay */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
-      {/* Mobile sidebar drawer */}
-      <div
-        className={`fixed top-0 left-0 bottom-0 w-60 z-50 lg:hidden transform transition-transform duration-300 ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        <AdminSidebar onClose={() => setSidebarOpen(false)} />
-      </div>
-
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0 lg:pl-60">
         {/* Mobile top bar */}
-        <header className="lg:hidden sticky top-0 z-20 bg-[var(--color-primary)] text-white flex items-center gap-3 px-4 h-14 shrink-0">
+        <header className="lg:hidden sticky top-0 z-20 bg-[var(--color-primary)] text-white flex items-center justify-between px-4 h-14 shrink-0 border-b border-white/10">
+          <span className="font-bold text-sm tracking-wide">
+            {BOTTOM_NAV.find((n) => isActive(n.href, n.exact))?.label ?? 'Адмін'}
+          </span>
           <button
-            onClick={() => setSidebarOpen(true)}
-            className="p-1.5 rounded-md hover:bg-white/10 transition-colors"
-            aria-label="Відкрити меню"
+            onClick={async () => {
+              await signOut();
+              router.push('/login');
+            }}
+            className="flex items-center gap-1.5 px-3 h-8 rounded-md text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+            aria-label="Вийти"
           >
-            {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+            <LogOut size={14} />
+            Вийти
           </button>
-          <span className="font-semibold text-sm">Baggertrans Адмін</span>
         </header>
 
-        <main className="flex-1 p-4 md:p-6 lg:p-8 min-w-0">
+        {/* Page content — extra bottom padding for mobile bottom nav */}
+        <main className="flex-1 p-4 md:p-6 lg:p-8 min-w-0 pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-8">
           {children}
         </main>
       </div>
+
+      {/* Mobile bottom navigation */}
+      <nav
+        className="fixed bottom-0 inset-x-0 z-30 lg:hidden bg-[var(--color-primary)] border-t border-white/10"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+        aria-label="Мобільна навігація"
+      >
+        <div className="flex h-16">
+          {BOTTOM_NAV.map(({ href, label, icon: Icon, exact }) => {
+            const active = isActive(href, exact);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={cn(
+                  'flex-1 flex flex-col items-center justify-center gap-1 transition-colors',
+                  active ? 'text-[var(--color-accent)]' : 'text-slate-400 hover:text-white',
+                )}
+              >
+                <Icon size={22} strokeWidth={active ? 2.5 : 1.75} />
+                <span className="text-[10px] font-semibold leading-none">{label}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </div>
   );
 }

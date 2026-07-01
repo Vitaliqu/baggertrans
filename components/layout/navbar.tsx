@@ -8,9 +8,11 @@ import { cn } from '@/lib/utils';
 import { Logo } from './logo';
 
 const navLinks = [
-  { label: 'Каталог', href: '/catalog' },
+  { label: 'Головна', href: '/' },
   { label: 'Про нас', href: '/about' },
-  { label: 'Умови оренди', href: '/terms' },
+  { label: 'Техніка', href: '/catalog' },
+  { label: 'Послуги', href: '/#services' },
+  { label: 'Переваги', href: '/#why-us' },
   { label: 'Контакти', href: '/contacts' },
 ];
 
@@ -18,6 +20,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 8);
@@ -43,8 +46,10 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-[#0a1120]/95 backdrop-blur-md shadow-[0_2px_24px_0_rgba(0,0,0,0.45)]'
-            : 'bg-[var(--color-primary)]',
+            ? 'bg-[var(--color-primary)]/95 backdrop-blur-md shadow-[0_2px_24px_0_rgba(0,0,0,0.45)]'
+            : isHome
+              ? 'bg-gradient-to-b from-black/50 to-transparent'
+              : 'bg-[var(--color-primary)]',
         )}
       >
         <div className="container-site">
@@ -56,13 +61,15 @@ export function Navbar() {
             {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-1" aria-label="Основна навігація">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href || pathname.startsWith(link.href + '/');
+                const isActive = link.href === '/'
+                  ? pathname === '/'
+                  : pathname === link.href || pathname.startsWith(link.href + '/');
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      'relative px-3 py-2 text-sm font-medium rounded transition-colors duration-150',
+                      'relative px-3 py-2 text-xs font-bold uppercase tracking-wider rounded transition-colors duration-150',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]',
                       isActive
                         ? 'text-[var(--color-accent)]'
@@ -83,23 +90,17 @@ export function Navbar() {
 
             {/* Desktop right actions */}
             <div className="hidden md:flex items-center gap-3">
-              <a
-                href="tel:+380671234567"
-                className="flex items-center gap-1.5 text-sm font-medium text-slate-300 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded px-1"
-              >
-                <Phone size={14} className="text-[var(--color-accent)]" />
-                +38 (067) 123-45-67
-              </a>
               <Link
-                href="/booking"
+                href="/contacts"
                 className={cn(
-                  'inline-flex items-center gap-2 px-5 h-10 text-sm font-semibold rounded-md text-white',
+                  'inline-flex items-center gap-2 px-5 h-10 text-xs font-bold uppercase tracking-wider rounded-md text-[var(--color-primary)]',
                   'bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] active:scale-[0.98]',
-                  'transition-all duration-150 shadow-[0_2px_12px_0_rgba(234,88,12,0.4)]',
+                  'transition-all duration-150 shadow-[0_2px_12px_0_rgba(244,184,21,0.4)]',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-primary)]',
                 )}
               >
-                Забронювати
+                <Phone size={14} strokeWidth={2.5} aria-hidden="true" />
+                Зв&apos;язатись з нами
               </Link>
             </div>
 
@@ -137,20 +138,22 @@ export function Navbar() {
         aria-label="Мобільна навігація"
         className={cn(
           'fixed top-16 left-0 right-0 z-40 md:hidden',
-          'bg-[#0a1120] border-t border-white/10',
+          'bg-[var(--color-primary)] border-t border-white/10',
           'transition-all duration-300 origin-top',
           mobileOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none',
         )}
       >
         <div className="container-site py-4 flex flex-col gap-1">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href || pathname.startsWith(link.href + '/');
+            const isActive = link.href === '/'
+              ? pathname === '/'
+              : pathname === link.href || pathname.startsWith(link.href + '/');
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'flex items-center px-3 py-3 text-base font-medium rounded-md transition-colors',
+                  'flex items-center px-3 py-3 text-sm font-bold uppercase tracking-wider rounded-md transition-colors',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]',
                   isActive
                     ? 'text-[var(--color-accent)] bg-white/5'
@@ -167,22 +170,23 @@ export function Navbar() {
 
           <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
             <a
-              href="tel:+380671234567"
+              href="tel:+420733777999"
               className="flex items-center gap-2 px-3 py-2.5 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5"
             >
               <Phone size={16} className="text-[var(--color-accent)]" />
-              +38 (067) 123-45-67
+              +420 733 777 999
             </a>
             <Link
-              href="/booking"
+              href="/contacts"
               className={cn(
-                'flex items-center justify-center h-12 text-base font-semibold rounded-md text-white mt-1',
+                'flex items-center justify-center gap-2 h-12 text-sm font-bold uppercase tracking-wider rounded-md text-[var(--color-primary)] mt-1',
                 'bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] active:scale-[0.98]',
-                'transition-all duration-150 shadow-[0_2px_12px_0_rgba(234,88,12,0.4)]',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1120]',
+                'transition-all duration-150 shadow-[0_2px_12px_0_rgba(244,184,21,0.4)]',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-primary)]',
               )}
             >
-              Забронювати
+              <Phone size={16} strokeWidth={2.5} aria-hidden="true" />
+              Зв&apos;язатись з нами
             </Link>
           </div>
         </div>

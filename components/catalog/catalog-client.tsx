@@ -90,7 +90,7 @@ export function CatalogClient({ initialEquipment }: CatalogClientProps) {
     cn(
       'w-8 h-8 rounded-md flex items-center justify-center transition-colors',
       active
-        ? 'bg-[var(--color-accent)] text-white'
+        ? 'bg-[var(--color-accent)] text-[var(--color-primary)]'
         : 'bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
     );
 
@@ -142,7 +142,7 @@ export function CatalogClient({ initialEquipment }: CatalogClientProps) {
           <SlidersHorizontal className="w-4 h-4" />
           Фільтри
           {activeFilterCount > 0 && (
-            <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-accent)] text-white text-[10px] font-bold leading-none">
+            <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-accent)] text-[var(--color-primary)] text-[10px] font-bold leading-none">
               {activeFilterCount}
             </span>
           )}

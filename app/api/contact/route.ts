@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       name: result.data.name,
       phone: result.data.phone,
       email: result.data.email || 'not provided',
-      messageLength: result.data.message.length,
+      messageLength: result.data.message?.length ?? 0,
       timestamp: new Date().toISOString(),
     });
 

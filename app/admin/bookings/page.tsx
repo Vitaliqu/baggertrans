@@ -82,7 +82,7 @@ export default function AdminBookingsPage() {
                   className={cn(
                     'inline-flex items-center justify-center min-w-[18px] h-[18px] rounded-full text-[10px] font-bold px-1',
                     activeTab === tab.value
-                      ? 'bg-[var(--color-accent)] text-white'
+                      ? 'bg-[var(--color-accent)] text-[var(--color-primary)]'
                       : 'bg-[var(--color-border)] text-[var(--color-text-muted)]'
                   )}
                 >

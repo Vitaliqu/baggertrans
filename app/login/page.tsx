@@ -87,8 +87,8 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="mt-2 h-11 rounded-lg bg-[var(--color-accent)] text-white font-semibold text-sm flex items-center justify-center gap-2 hover:bg-orange-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-              style={{ boxShadow: '0 4px 14px 0 rgba(234,88,12,0.4)' }}
+              className="mt-2 h-11 rounded-lg bg-[var(--color-accent)] text-[var(--color-primary)] font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[var(--color-accent-hover)] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              style={{ boxShadow: '0 4px 14px 0 rgba(244,184,21,0.4)' }}
             >
               {loading ? (
                 <>

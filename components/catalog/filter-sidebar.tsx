@@ -195,7 +195,7 @@ export function FilterSidebar({ filters, onChange, activeCount = 0, drawerOpen, 
             <SlidersHorizontal className="w-4 h-4" />
             Фільтри
             {activeCount > 0 && (
-              <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-accent)] text-white text-[10px] font-bold leading-none">
+              <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-accent)] text-[var(--color-primary)] text-[10px] font-bold leading-none">
                 {activeCount}
               </span>
             )}

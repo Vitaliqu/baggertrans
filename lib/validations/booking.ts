@@ -19,7 +19,7 @@ export const contactSchema = z.object({
   name: z.string().min(2, "Ім'я має містити мінімум 2 символи"),
   phone: z.string().regex(/^\+?[\d\s\-()]{10,}$/, 'Введіть коректний номер телефону'),
   email: z.string().email('Введіть коректний email').optional().or(z.literal('')),
-  message: z.string().min(10, 'Повідомлення має містити мінімум 10 символів'),
+  message: z.string().min(10, 'Повідомлення має містити мінімум 10 символів').optional().or(z.literal('')),
 });
 
 export type BookingFormValues = z.infer<typeof bookingSchema>;
